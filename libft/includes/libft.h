@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 16:29:28 by apuchill          #+#    #+#             */
-/*   Updated: 2021/05/21 22:44:25 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/05/23 16:20:42 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <signal.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
+# include "dict.h"
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -99,6 +100,7 @@ void			ft_putnbr_fd(int n, int fd);
 
 void			ft_swap(int *a, int *b);
 int				ft_atoi(const char *str);
+long long		ft_atoll(const char *str);
 double			ft_atof(const char *str);
 char			*ft_itoa(int n);
 double			ft_sqrt(double x);
