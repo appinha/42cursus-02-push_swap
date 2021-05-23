@@ -57,8 +57,6 @@ static void	get_input(char *argv[], t_stacks *stack)
 		lstadd_back(&stack->a, new);
 		i++;
 	}
-	new->next = stack->a;
-	stack->a->prev = new;
 	dict_destroy(dict_nbrs);
 }
 

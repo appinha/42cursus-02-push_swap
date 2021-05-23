@@ -48,18 +48,22 @@ t_lst	*lstlast(t_lst *lst)
 
 void	lstadd_back(t_lst **lst, t_lst *new)
 {
-	t_lst	*aux;
+	t_lst	*last;
 
 	if (!new)
 		return ;
 	if (!*lst)
 	{
 		*lst = new;
+		new->next = new;
+		new->prev = new;
 		return ;
 	}
-	aux = lstlast(*lst);
-	aux->next = new;
-	new->prev = aux;
+	last = lstlast(*lst);
+	last->next = new;
+	new->prev = last;
+	new->next = *lst;
+	(*lst)->prev = new;
 }
 
 void	lstclear(t_lst **lst)
