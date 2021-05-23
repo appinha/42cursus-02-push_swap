@@ -21,6 +21,7 @@
 # include <limits.h>
 # include <unistd.h>
 # include "libft.h"
+# include "errors.h"
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -31,11 +32,18 @@
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              STRUCT DECLARATIONS
 */
+typedef struct s_lst
+{
+	int				nbr;
+	struct s_lst	*prev;
+	struct s_lst	*next;
+}	t_lst;
 
-/*
-** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
-**                              GLOBAL VARIABLES
-*/
+typedef struct s_stacks
+{
+	t_lst	*a;
+	t_lst	*b;
+}	t_stacks;
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -45,5 +53,9 @@
 /*
 ** FILE: utils.c
 */
+bool	ft_str_isint(char *str);
+t_lst	*lstlast(t_lst *lst);
+void	lstadd_back(t_lst **lst, t_lst *new);
+void	lstclear(t_lst **lst);
 
 #endif

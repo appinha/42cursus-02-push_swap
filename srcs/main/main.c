@@ -12,10 +12,48 @@
 
 #include "push_swap.h"
 
+static void	print_input(t_lst *stack_a, int len)
+{
+	while (len)
+	{
+		ft_printf("%i ", stack_a->nbr);
+		stack_a = stack_a->next;
+		len--;
+	}
+}
+
+static void	get_input(char *argv[], t_stacks *stack)
+{
+	t_dict	*dict_nbrs;
+	t_lst	*new;
+	int		i;
+
+	dict_nbrs = dict_create(ft_strlen_2(argv));
+	i = 1;
+	while (argv[i])
+	{
+		if (ft_str_isint(argv[i]) == false || dict_get(dict_nbrs, argv[i]))
+			error_msg_and_exit(0, INPUTERR);
+		dict_insert(dict_nbrs, argv[i], strdup_ver(argv[i]));
+		new = calloc_ver(1, sizeof(t_lst));
+		new->nbr = ft_atoi(argv[i]);
+		lstadd_back(&stack->a, new);
+		i++;
+	}
+	new->next = stack->a;
+	stack->a->prev = new;
+	dict_destroy(dict_nbrs);
+}
+
 int	main(int argc, char *argv[])
 {
-	if (argc > 1 && argv)
-		return (EXIT_FAILURE);
-	ft_printf("Hello, world!\n");
+	t_stacks	stack;
+
+	ft_bzero(&stack, sizeof(t_stacks));
+	if (argc == 1)
+		error_msg_and_exit(0, INPUTERR);
+	get_input(argv, &stack);
+	print_input(stack.a, ft_strlen_2(argv));
+	lstclear(&stack.a);
 	return (EXIT_SUCCESS);
 }
