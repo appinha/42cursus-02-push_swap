@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+static bool	is_lst_ordered(t_lst *stack_a)
+{
+	t_lst	*last;
+
+	last = lstlast(stack_a);
+	if (stack_a == last)
+		return (true);
+	while (stack_a != last)
+	{
+		if (stack_a->nbr > stack_a->next->nbr)
+			return (false);
+		stack_a = stack_a->next;
+	}
+	return (true);
+}
+
 static void	print_input(t_lst *stack_a, int len)
 {
 	while (len)
@@ -20,6 +36,7 @@ static void	print_input(t_lst *stack_a, int len)
 		stack_a = stack_a->next;
 		len--;
 	}
+	ft_printf("\n");
 }
 
 static void	get_input(char *argv[], t_stacks *stack)
@@ -54,6 +71,7 @@ int	main(int argc, char *argv[])
 		error_msg_and_exit(0, INPUTERR);
 	get_input(argv, &stack);
 	print_input(stack.a, ft_strlen_2(argv));
+	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack.a) ? "yes" : "no");
 	lstclear(&stack.a);
 	return (EXIT_SUCCESS);
 }
