@@ -49,7 +49,7 @@ For detailed information, refer to the [**subject of this project**](https://git
 * [**📁 srcs:**](srcs/) contains the source code of the program.
 * [**Makefile**](Makefile) - contains instructions for compiling the program and testing it.
 
-_Note: program covers only mandatory requirements of the project's subject._
+_Note: only mandatory requirements of the project's subject are covered._
 
 ## 🛠️ Usage
 
@@ -83,9 +83,39 @@ _(to be written)_
 
 ## 📌 Useful Links
 
-_(to be written)_
-
+* [[Medium] Push_Swap: The least amount of moves with two stacks](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
 
 ## 🤓 Study Summary
 
-_(to be written)_
+### Actions
+
+**PUSH**
+
+Take the first element at the top of one stack and put it at the top of the other; do nothing if the origin stack is empty.
+
+* **`pa`** - top element of _stack b_ goes to top of _stack a_.
+* **`pb`** - top element of _stack a_ goes to top of _stack b_.
+
+**SWAP**
+
+Swap the first 2 elements at the top of the stack; do nothing if there is only one or no elements.
+
+* **`sa`** - swap  _stack a_.
+* **`sb`** - swap  _stack b_.
+* **`ss`** - `sa` and `sb` at the same time.
+
+**ROTATE**
+
+Shift up all elements of the stack by one; the first element becomes the last.
+
+* **`ra`** - rotate stack a.
+* **`rb`** - rotate stack b.
+* **`rr`** - `ra` and `rb` at the same time.
+
+**REVERSE ROTATE**
+
+Shift down all elements of the stack by one; the last element becomes the first.
+
+* **`rra`** - reverse rotate stack a.
+* **`rrb`** - reverse rotate stack b.
+* **`rrr`** - `rra` and `rrb` at the same time.
