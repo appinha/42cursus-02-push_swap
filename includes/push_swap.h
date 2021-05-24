@@ -32,17 +32,17 @@
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              STRUCT DECLARATIONS
 */
-typedef struct s_lst
+typedef struct s_lst2
 {
 	int				nbr;
-	struct s_lst	*prev;
-	struct s_lst	*next;
-}	t_lst;
+	struct s_lst2	*prev;
+	struct s_lst2	*next;
+}	t_lst2;
 
 typedef struct s_stacks
 {
-	t_lst	*a;
-	t_lst	*b;
+	t_lst2	*a;
+	t_lst2	*b;
 }	t_stacks;
 
 /*
@@ -51,11 +51,16 @@ typedef struct s_stacks
 */
 
 /*
+** FILE: lstc2_oper.c
+*/
+t_lst2	*lst2c_last(t_lst2 *lst);
+void	lst2c_addback(t_lst2 **lst, t_lst2 *new);
+void	lst2c_addfront(t_lst2 **lst, t_lst2 *new);
+t_lst2	*lst2c_delnode(t_lst2 **lst, t_lst2 *node);
+void	lst2c_clear(t_lst2 **lst);
+/*
 ** FILE: utils.c
 */
 bool	ft_str_isint(char *str);
-t_lst	*lstlast(t_lst *lst);
-void	lstadd_back(t_lst **lst, t_lst *new);
-void	lstclear(t_lst **lst);
 
 #endif

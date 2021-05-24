@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-static bool	is_lst_ordered(t_lst *stack_a)
+static bool	is_lst_ordered(t_lst2 *stack_a)
 {
-	t_lst	*last;
+	t_lst2	*last;
 
-	last = lstlast(stack_a);
+	last = lst2c_last(stack_a);
 	if (stack_a == last)
 		return (true);
 	while (stack_a != last)
@@ -28,7 +28,7 @@ static bool	is_lst_ordered(t_lst *stack_a)
 	return (true);
 }
 
-static void	print_input(t_lst *stack_a, int len)
+static void	print_input(t_lst2 *stack_a, int len)
 {
 	while (len)
 	{
@@ -42,7 +42,7 @@ static void	print_input(t_lst *stack_a, int len)
 static void	get_input(char *argv[], t_stacks *stack)
 {
 	t_dict	*dict_nbrs;
-	t_lst	*new;
+	t_lst2	*new;
 	int		i;
 
 	dict_nbrs = dict_create(ft_strlen_2(argv));
@@ -52,9 +52,9 @@ static void	get_input(char *argv[], t_stacks *stack)
 		if (ft_str_isint(argv[i]) == false || dict_get(dict_nbrs, argv[i]))
 			error_msg_and_exit(0, INPUTERR);
 		dict_insert(dict_nbrs, argv[i], strdup_ver(argv[i]));
-		new = calloc_ver(1, sizeof(t_lst));
+		new = calloc_ver(1, sizeof(t_lst2));
 		new->nbr = ft_atoi(argv[i]);
-		lstadd_back(&stack->a, new);
+		lst2c_addback(&stack->a, new);
 		i++;
 	}
 	dict_destroy(dict_nbrs);
@@ -70,6 +70,6 @@ int	main(int argc, char *argv[])
 	get_input(argv, &stack);
 	print_input(stack.a, ft_strlen_2(argv));
 	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack.a) ? "yes" : "no");
-	lstclear(&stack.a);
+	lst2c_clear(&stack.a);
 	return (EXIT_SUCCESS);
 }
