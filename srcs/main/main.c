@@ -12,31 +12,43 @@
 
 #include "push_swap.h"
 
-static bool	is_lst_ordered(t_lst2 *stack_a)
+static bool	is_lst_ordered(t_lst2 *stack)
 {
 	t_lst2	*last;
 
-	last = lst2c_last(stack_a);
-	if (stack_a == last)
+	last = lst2c_last(stack);
+	if (stack == last)
 		return (true);
-	while (stack_a != last)
+	while (stack != last)
 	{
-		if (stack_a->nbr > stack_a->next->nbr)
+		if (stack->nbr > stack->next->nbr)
 			return (false);
-		stack_a = stack_a->next;
+		stack = stack->next;
 	}
 	return (true);
 }
 
-static void	print_input(t_lst2 *stack_a, int len)
+static void	print_input(t_lst2 *stack)
 {
-	while (len)
+	t_lst2	*first;
+	int len;
+
+	if (!stack)
+		return ;
+	first = stack;
+	len = 1;
+	while (stack->next != first)
 	{
-		ft_printf("%i ", stack_a->nbr);
-		stack_a = stack_a->next;
-		len--;
+		stack = stack->next;
+		len++;
 	}
-	ft_printf("\n");
+	stack = first;
+	while (len--)
+	{
+		ft_printf("%i ", stack->nbr);
+		stack = stack->next;
+	}
+	ft_printf("(%i)\n", stack->nbr);
 }
 
 static void	get_input(char *argv[], t_stacks *stack)
@@ -68,7 +80,8 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		error_msg_and_exit(0, INPUTERR);
 	get_input(argv, &stack);
-	print_input(stack.a, ft_strlen_2(argv));
+	ft_printf("stack a: ");
+	print_input(stack.a);
 	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack.a) ? "yes" : "no");
 	lst2c_clear(&stack.a);
 	return (EXIT_SUCCESS);
