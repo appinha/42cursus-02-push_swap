@@ -49,6 +49,7 @@ typedef struct s_stacks
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              FUNCTION PROTOTYPES
 */
+void	print_stack(t_lst2 *stack, char name);
 /*
 ** FILE: lstc2_oper.c
 */

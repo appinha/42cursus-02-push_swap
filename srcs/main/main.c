@@ -28,13 +28,17 @@ static bool	is_lst_ordered(t_lst2 *stack)
 	return (true);
 }
 
-static void	print_input(t_lst2 *stack)
+void	print_stack(t_lst2 *stack, char name)
 {
 	t_lst2	*first;
 	int len;
 
+	ft_printf("stack %c: ", name);
 	if (!stack)
+	{
+		ft_printf("\n");
 		return ;
+	}
 	first = stack;
 	len = 1;
 	while (stack->next != first)
@@ -80,8 +84,7 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		error_msg_and_exit(0, INPUTERR);
 	get_input(argv, &stack);
-	ft_printf("stack a: ");
-	print_input(stack.a);
+	print_stack(stack.a, 'a');
 	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack.a) ? "yes" : "no");
 	lst2c_clear(&stack.a);
 	return (EXIT_SUCCESS);
