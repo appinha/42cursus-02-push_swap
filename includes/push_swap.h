@@ -51,6 +51,11 @@ typedef struct s_stacks
 */
 void	print_stack(t_lst2 *stack, char name);
 /*
+** FILE: actions_p.c
+*/
+void	action_pa(t_stacks *stack);
+void	action_pb(t_stacks *stack);
+/*
 ** FILE: lstc2_oper.c
 */
 void	lst2c_addback(t_lst2 **first, t_lst2 *new);

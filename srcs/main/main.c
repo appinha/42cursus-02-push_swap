@@ -16,6 +16,8 @@ static bool	is_lst_ordered(t_lst2 *stack)
 {
 	t_lst2	*last;
 
+	if (!stack)
+		return (false);
 	last = stack->prev;
 	if (stack == last)
 		return (true);
@@ -76,6 +78,26 @@ static void	get_input(char *argv[], t_stacks *stack)
 	dict_destroy(dict_nbrs);
 }
 
+static void	testing(t_stacks *stack)
+{
+	print_stack(stack->a, 'a');
+	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack->a) ? "yes" : "no");
+	ft_printf("--> action_pb 3x\n");
+	action_pb(stack);
+	action_pb(stack);
+	action_pb(stack);
+	print_stack(stack->a, 'a');
+	print_stack(stack->b, 'b');
+	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack->a) ? "yes" : "no");
+	ft_printf("--> action_pa 3x\n");
+	action_pa(stack);
+	action_pa(stack);
+	action_pa(stack);
+	print_stack(stack->a, 'a');
+	print_stack(stack->b, 'b');
+	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack->a) ? "yes" : "no");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stacks	stack;
@@ -84,8 +106,8 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		error_msg_and_exit(0, INPUTERR);
 	get_input(argv, &stack);
-	print_stack(stack.a, 'a');
-	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack.a) ? "yes" : "no");
+	testing(&stack);
 	lst2c_clear(&stack.a);
+	lst2c_clear(&stack.b);
 	return (EXIT_SUCCESS);
 }
