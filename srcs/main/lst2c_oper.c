@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 21:44:07 by apuchill          #+#    #+#             */
-/*   Updated: 2021/05/26 20:22:55 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:26:03 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,62 +16,40 @@
 
 #include "push_swap.h"
 
-t_lst2	*lst2c_last(t_lst2 *lst)
-{
-	t_lst2	*first;
-
-	if (!lst)
-		return (0);
-	first = lst;
-	while (lst->next && lst->next != first)
-		lst = lst->next;
-	return (lst);
-}
-
-void	lst2c_addback(t_lst2 **lst, t_lst2 *new)
+void	lst2c_addback(t_lst2 **first, t_lst2 *new)
 {
 	t_lst2	*last;
 
 	if (!new)
 		return ;
-	if (!*lst)
+	if (!*first)
 	{
-		*lst = new;
+		*first = new;
 		new->next = new;
 		new->prev = new;
 		return ;
 	}
-	last = lst2c_last(*lst);
+	last = (*first)->prev;
 	last->next = new;
 	new->prev = last;
-	new->next = *lst;
-	(*lst)->prev = new;
+	new->next = *first;
+	(*first)->prev = new;
 }
 
-void	lst2c_addfront(t_lst2 **lst, t_lst2 *new)
+void	lst2c_addfront(t_lst2 **first, t_lst2 *new)
 {
-	if (!new)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		new->next = new;
-		new->prev = new;
-		return ;
-	}
-	new->next = *lst;
-	new->prev = (*lst)->prev;
-	*lst = new;
+	lst2c_addback(first, new);
+	*first = new;
 }
 
-t_lst2	*lst2c_delnode(t_lst2 **lst, t_lst2 *node)
+t_lst2	*lst2c_delnode(t_lst2 **first, t_lst2 *node)
 {
-	if (*lst == node)
+	if (*first == node)
 	{
 		if (node == node->next)
-			*lst = 0;
+			*first = 0;
 		else
-			*lst = node->next;
+			*first = node->next;
 	}
 	if (node != node->next)
 	{
@@ -83,19 +61,18 @@ t_lst2	*lst2c_delnode(t_lst2 **lst, t_lst2 *node)
 	return (node);
 }
 
-void	lst2c_clear(t_lst2 **lst)
+void	lst2c_clear(t_lst2 **first)
 {
 	t_lst2	*aux;
 
-	if (!*lst)
+	if (!*first)
 		return ;
-	aux = lst2c_last(*lst);
-	aux->next = NULL;
-	while (*lst)
+	(*first)->prev->next = NULL;
+	while (*first)
 	{
-		aux = (*lst)->next;
-		free_null((void **)lst);
-		*lst = aux;
+		aux = (*first)->next;
+		free_null((void **)first);
+		*first = aux;
 	}
-	*lst = 0;
+	*first = 0;
 }

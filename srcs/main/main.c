@@ -16,7 +16,7 @@ static bool	is_lst_ordered(t_lst2 *stack)
 {
 	t_lst2	*last;
 
-	last = lst2c_last(stack);
+	last = stack->prev;
 	if (stack == last)
 		return (true);
 	while (stack != last)

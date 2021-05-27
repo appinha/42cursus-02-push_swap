@@ -49,15 +49,13 @@ typedef struct s_stacks
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              FUNCTION PROTOTYPES
 */
-
 /*
 ** FILE: lstc2_oper.c
 */
-t_lst2	*lst2c_last(t_lst2 *lst);
-void	lst2c_addback(t_lst2 **lst, t_lst2 *new);
-void	lst2c_addfront(t_lst2 **lst, t_lst2 *new);
-t_lst2	*lst2c_delnode(t_lst2 **lst, t_lst2 *node);
-void	lst2c_clear(t_lst2 **lst);
+void	lst2c_addback(t_lst2 **first, t_lst2 *new);
+void	lst2c_addfront(t_lst2 **first, t_lst2 *new);
+t_lst2	*lst2c_delnode(t_lst2 **first, t_lst2 *node);
+void	lst2c_clear(t_lst2 **first);
 /*
 ** FILE: utils.c
 */
