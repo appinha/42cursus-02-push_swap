@@ -6,7 +6,7 @@
 #    By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/21 21:51:32 by apuchill          #+#    #+#              #
-#    Updated: 2021/05/22 19:10:58 by apuchill         ###   ########.fr        #
+#    Updated: 2021/05/27 21:39:00 by apuchill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LFT_FLAGS	= -L $(LIBFT_DIR) -lft
 CC			= clang
 # CFLAGS		= -Wall -Wextra -Werror
 # CFLAGS		= -g -Wall -Wextra -Werror
-CFLAGS		= -g3 -fsanitize=address -Wall -Wextra -Werror
+CFLAGS		= -g3 -fsanitize=address
 RM			= /bin/rm -f
 NORM		= norminette
 
@@ -66,7 +66,7 @@ reset:
 
 .PHONY:		run
 run:		reset all
-			./$(NAME)
+			./$(NAME) 1 2 3
 
 .PHONY:		norm
 norm:
