@@ -59,10 +59,34 @@ static void	testing_s(t_stacks *stack)
 	print_stack(stack->b, 'b');
 }
 
+static void	testing_r(t_stacks *stack)
+{
+	ft_printf("\n--> action_rr\n");
+	action_rr(stack);
+	print_stack(stack->a, 'a');
+	print_stack(stack->b, 'b');
+	ft_printf("\n--> action_pb\n");
+	action_pb(stack);
+	print_stack(stack->a, 'a');
+	print_stack(stack->b, 'b');
+}
+
 void	testing(t_stacks *stack)
 {
 	testing_p(stack);
+
 	testing_s(stack);
 	testing_s(stack);
 	testing_s(stack);
+
+	ft_printf("\n--> action_pa 3x\n");
+	action_pa(stack);
+	action_pa(stack);
+	action_pa(stack);
+	print_stack(stack->a, 'a');
+	print_stack(stack->b, 'b');
+
+	testing_r(stack);
+	testing_r(stack);
+	testing_r(stack);
 }
