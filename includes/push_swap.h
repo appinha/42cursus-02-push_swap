@@ -49,7 +49,7 @@ typedef struct s_stacks
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              FUNCTION PROTOTYPES
 */
-void	print_stack(t_lst2 *stack, char name);
+bool	is_lst_ordered(t_lst2 *stack);
 /*
 ** FILE: actions_p.c
 */
@@ -72,5 +72,8 @@ void	lst2c_clear(t_lst2 **first);
 ** FILE: utils.c
 */
 bool	ft_str_isint(char *str);
+
+// APAGAR
+void	testing(t_stacks *stack);
 
 #endif
