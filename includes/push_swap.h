@@ -68,6 +68,12 @@ void	action_ra(t_stacks *stack);
 void	action_rb(t_stacks *stack);
 void	action_rr(t_stacks *stack);
 /*
+** FILE: actions_rr.c
+*/
+void	action_rra(t_stacks *stack);
+void	action_rrb(t_stacks *stack);
+void	action_rrr(t_stacks *stack);
+/*
 ** FILE: lstc2_oper.c
 */
 void	lst2c_addback(t_lst2 **first, t_lst2 *new);
