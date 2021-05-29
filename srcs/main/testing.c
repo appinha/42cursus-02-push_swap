@@ -3,7 +3,6 @@
 static void	print_stack(t_lst2 *stack, char name)
 {
 	t_lst2	*first;
-	int len;
 
 	ft_printf("stack %c: ", name);
 	if (!stack)
@@ -12,19 +11,13 @@ static void	print_stack(t_lst2 *stack, char name)
 		return ;
 	}
 	first = stack;
-	len = 1;
 	while (stack->next != first)
 	{
-		stack = stack->next;
-		len++;
-	}
-	stack = first;
-	while (len--)
-	{
-		ft_printf("%i ", stack->nbr);
+		ft_printf("%01i ", stack->nbr);
 		stack = stack->next;
 	}
-	ft_printf("(%i)\n", stack->nbr);
+	ft_printf("%01i ", stack->nbr);
+	ft_printf("(%01i)\n", stack->next->nbr);
 }
 
 static void	testing_p(t_stacks *stack)
