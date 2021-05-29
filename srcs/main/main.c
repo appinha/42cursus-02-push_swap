@@ -56,9 +56,9 @@ int	main(int argc, char *argv[])
 {
 	t_stacks	stack;
 
-	ft_bzero(&stack, sizeof(t_stacks));
 	if (argc == 1)
-		error_msg_and_exit(0, INPUTERR);
+		return (EXIT_SUCCESS);
+	ft_bzero(&stack, sizeof(t_stacks));
 	get_input(argv, &stack);
 	testing(&stack);
 	lst2c_clear(&stack.a);
