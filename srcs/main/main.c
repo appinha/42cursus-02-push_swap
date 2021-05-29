@@ -57,11 +57,11 @@ int	main(int argc, char *argv[])
 	t_stacks	stack;
 
 	if (argc == 1)
-		return (EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
 	ft_bzero(&stack, sizeof(t_stacks));
 	get_input(argv, &stack);
+	if (is_lst_ordered(stack.a) == true)
+		exit(EXIT_SUCCESS);
 	testing(&stack);
-	lst2c_clear(&stack.a);
-	lst2c_clear(&stack.b);
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
