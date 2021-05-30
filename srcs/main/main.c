@@ -30,15 +30,28 @@ bool	is_lst_ordered(t_lst2 *stack)
 	return (true);
 }
 
-// TODO: caso do input via variável de ambiente (string)
+static bool	is_input_splitted(char **argv[])
+{
+	if (ft_strlen_2(*argv) == 2)
+	{
+		*argv = ft_split(argv[0][1], ' ');
+		return (true);
+	}
+	return (false);
+}
+
 static void	get_input(char *argv[], t_stacks *stack)
 {
+	int		i;
+	bool	needs_free;
 	t_dict	*dict_nbrs;
 	t_lst2	*new;
-	int		i;
 
+	i = 0;
+	needs_free = is_input_splitted(&argv);
+	if (needs_free == false)
+		i++;
 	dict_nbrs = dict_create(ft_strlen_2(argv));
-	i = 1;
 	while (argv[i])
 	{
 		if (ft_str_isint(argv[i]) == false || dict_get(dict_nbrs, argv[i]))
@@ -49,6 +62,8 @@ static void	get_input(char *argv[], t_stacks *stack)
 		lst2c_addback(&stack->a, new);
 		i++;
 	}
+	if (needs_free == true)
+		ft_split_free(argv);
 	dict_destroy(dict_nbrs);
 }
 
