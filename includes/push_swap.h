@@ -27,6 +27,19 @@
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              MACROS
 */
+typedef enum	e_type {
+	PA,
+	PB,
+	SA,
+	SB,
+	SS,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}	t_type;
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -51,28 +64,9 @@ typedef struct s_stacks
 */
 bool	is_lst_ordered(t_lst2 *stack);
 /*
-** FILE: actions_p.c
+** FILE: actions.c
 */
-void	action_pa(t_stacks *stack);
-void	action_pb(t_stacks *stack);
-/*
-** FILE: actions_s.c
-*/
-void	action_sa(t_stacks *stack);
-void	action_sb(t_stacks *stack);
-void	action_ss(t_stacks *stack);
-/*
-** FILE: actions_r.c
-*/
-void	action_ra(t_stacks *stack);
-void	action_rb(t_stacks *stack);
-void	action_rr(t_stacks *stack);
-/*
-** FILE: actions_rr.c
-*/
-void	action_rra(t_stacks *stack);
-void	action_rrb(t_stacks *stack);
-void	action_rrr(t_stacks *stack);
+void	run_action(t_type action, t_stacks *stack);
 /*
 ** FILE: lstc2_oper.c
 */

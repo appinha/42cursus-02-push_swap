@@ -17,7 +17,7 @@ static void	print_stack(t_lst2 *stack, char name)
 		stack = stack->next;
 	}
 	ft_printf("%01i ", stack->nbr);
-	ft_printf("(%01i)\n", stack->next->nbr);
+	ft_printf("(%01i)\n", stack->nbr);
 }
 
 static void	testing_p(t_stacks *stack)
@@ -25,16 +25,16 @@ static void	testing_p(t_stacks *stack)
 	print_stack(stack->a, 'a');
 	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack->a) ? "yes" : "no");
 	ft_printf("\n--> action_pb 3x\n");
-	action_pb(stack);
-	action_pb(stack);
-	action_pb(stack);
+	run_action(PB, stack);
+	run_action(PB, stack);
+	run_action(PB, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack->a) ? "yes" : "no");
 	ft_printf("\n--> action_pa 3x\n");
-	action_pa(stack);
-	action_pa(stack);
-	action_pa(stack);
+	run_action(PA, stack);
+	run_action(PA, stack);
+	run_action(PA, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 	ft_printf("is_lst_ordered? %s\n", is_lst_ordered(stack->a) ? "yes" : "no");
@@ -43,11 +43,11 @@ static void	testing_p(t_stacks *stack)
 static void	testing_s(t_stacks *stack)
 {
 	ft_printf("\n--> action_ss\n");
-	action_ss(stack);
+	run_action(SS, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 	ft_printf("\n--> action_pb\n");
-	action_pb(stack);
+	run_action(PB, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 }
@@ -55,11 +55,11 @@ static void	testing_s(t_stacks *stack)
 static void	testing_r(t_stacks *stack)
 {
 	ft_printf("\n--> action_rr\n");
-	action_rr(stack);
+	run_action(RR, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 	ft_printf("\n--> action_pb\n");
-	action_pb(stack);
+	run_action(PB, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 }
@@ -67,11 +67,11 @@ static void	testing_r(t_stacks *stack)
 static void	testing_rr(t_stacks *stack)
 {
 	ft_printf("\n--> action_rrr\n");
-	action_rrr(stack);
+	run_action(RRR, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 	ft_printf("\n--> action_pb\n");
-	action_pb(stack);
+	run_action(PB, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 }
@@ -79,9 +79,9 @@ static void	testing_rr(t_stacks *stack)
 static void	reset(t_stacks *stack)
 {
 	ft_printf("\n--> action_pa 3x\n");
-	action_pa(stack);
-	action_pa(stack);
-	action_pa(stack);
+	run_action(PA, stack);
+	run_action(PA, stack);
+	run_action(PA, stack);
 	print_stack(stack->a, 'a');
 	print_stack(stack->b, 'b');
 
