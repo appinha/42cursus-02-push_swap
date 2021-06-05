@@ -27,7 +27,7 @@
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              MACROS
 */
-typedef enum	e_type {
+typedef enum e_type {
 	PA,
 	PB,
 	SA,
@@ -70,6 +70,7 @@ void	run_action(t_type action, t_stacks *stack);
 /*
 ** FILE: lstc2_oper.c
 */
+t_lst2	*lst2c_new(int nbr);
 void	lst2c_addback(t_lst2 **first, t_lst2 *new);
 void	lst2c_addfront(t_lst2 **first, t_lst2 *new);
 t_lst2	*lst2c_delnode(t_lst2 **first, t_lst2 *node);

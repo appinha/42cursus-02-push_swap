@@ -45,10 +45,9 @@ static void	get_input(char *argv[], t_stacks *stack)
 	int		i;
 	bool	needs_free;
 	t_dict	*dict_nbrs;
-	t_lst2	*new;
 
-	i = 0;
 	needs_free = is_input_splitted(&argv);
+	i = 0;
 	if (needs_free == false)
 		i++;
 	dict_nbrs = dict_create(ft_strlen_2(argv));
@@ -57,9 +56,7 @@ static void	get_input(char *argv[], t_stacks *stack)
 		if (ft_str_isint(argv[i]) == false || dict_get(dict_nbrs, argv[i]))
 			error_msg_and_exit(0, INPUTERR);
 		dict_insert(dict_nbrs, argv[i], strdup_ver(argv[i]));
-		new = calloc_ver(1, sizeof(t_lst2));
-		new->nbr = ft_atoi(argv[i]);
-		lst2c_addback(&stack->a, new);
+		lst2c_addback(&stack->a, lst2c_new(ft_atoi(argv[i])));
 		i++;
 	}
 	if (needs_free == true)

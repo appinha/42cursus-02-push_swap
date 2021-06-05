@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 21:44:07 by apuchill          #+#    #+#             */
-/*   Updated: 2021/05/26 21:26:03 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/05 13:51:52 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 */
 
 #include "push_swap.h"
+
+t_lst2	*lst2c_new(int nbr)
+{
+	t_lst2	*new;
+
+	new = calloc_ver(1, sizeof(t_lst2));
+	new->nbr = nbr;
+	return (new);
+}
 
 void	lst2c_addback(t_lst2 **first, t_lst2 *new)
 {
