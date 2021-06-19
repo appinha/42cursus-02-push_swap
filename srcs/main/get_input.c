@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:59:40 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/19 14:00:16 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 14:49:15 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool	is_input_splitted(char **argv[])
 {
 	if (ft_strlen_2(*argv) == 2)
 	{
-		*argv = ft_split(argv[0][1], ' ');
+		*argv = ft_split_ver(argv[0][1], ' ');
 		return (true);
 	}
 	return (false);
@@ -56,14 +56,14 @@ t_dict	*get_input(char *argv[], t_stacks *stack)
 	i = 0;
 	if (needs_free == false)
 		i++;
-	dict_nbrs = dict_create(ft_strlen_2(argv));
+	dict_nbrs = dict_create_ver(ft_strlen_2(argv));
 	while (argv[i])
 	{
 		if (ft_str_isint(argv[i]) == false || dict_get(dict_nbrs, argv[i]))
 			error_msg_and_exit(0, INPUTERR);
 		new = lst2c_new(ft_atoi(argv[i]));
 		insert_in_order(&stack->order, new);
-		dict_insert(dict_nbrs, argv[i], new);
+		dict_insert_ver(dict_nbrs, argv[i], new);
 		lst2c_addback(&stack->a, lst2c_new(ft_atoi(argv[i])));
 		i++;
 	}

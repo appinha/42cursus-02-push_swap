@@ -6,21 +6,11 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:58:06 by apuchill          #+#    #+#             */
-/*   Updated: 2021/05/22 19:06:33 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 14:50:31 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
-
-ssize_t	read_ver(int fd, void *buf, size_t nbytes)
-{
-	ssize_t	ret;
-
-	ret = read(fd, buf, nbytes);
-	if (ret < 0)
-		error_msg_and_exit("read", SYSERR);
-	return (ret);
-}
 
 void	*calloc_ver(size_t count, size_t size)
 {
@@ -32,23 +22,6 @@ void	*calloc_ver(size_t count, size_t size)
 	return (ptr);
 }
 
-void	free_null(void **ptr)
-{
-	if (*ptr)
-		free(*ptr);
-	*ptr = 0;
-}
-
-char	*strdup_ver(const char *s1)
-{
-	void	*ptr;
-
-	ptr = ft_strdup(s1);
-	if (ptr == NULL)
-		error_msg_and_exit("ft_strdup", SYSERR);
-	return (ptr);
-}
-
 char	**ft_split_ver(const char *s, char c)
 {
 	char	**ptr;
@@ -57,4 +30,20 @@ char	**ft_split_ver(const char *s, char c)
 	if (ptr == NULL)
 		error_msg_and_exit("ft_split", SYSERR);
 	return (ptr);
+}
+
+t_dict	*dict_create_ver(unsigned int len)
+{
+	t_dict	*ptr;
+
+	ptr = dict_create(len);
+	if (ptr == NULL)
+		error_msg_and_exit("dict_create", SYSERR);
+	return (ptr);
+}
+
+void	dict_insert_ver(t_dict *dict, const char *key, void *value)
+{
+	if (dict_insert(dict, key, value) < 0)
+		error_msg_and_exit("dict_insert", SYSERR);
 }

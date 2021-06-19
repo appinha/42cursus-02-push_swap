@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 21:44:07 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/05 13:51:52 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 15:16:31 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	lst2c_clear(t_lst2 **first)
 	while (*first)
 	{
 		aux = (*first)->next;
-		free_null((void **)first);
+		free((void **)first);
 		*first = aux;
 	}
 	*first = 0;

@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:56:35 by apuchill          #+#    #+#             */
-/*   Updated: 2021/05/22 19:06:58 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 14:49:37 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ void	error_msg_and_exit(char *function, char *msg);
 /*
 ** FILE: ft_ver_1.c
 */
-ssize_t	read_ver(int fd, void *buf, size_t nbytes);
 void	*calloc_ver(size_t count, size_t size);
-void	free_null(void **ptr);
-char	*strdup_ver(const char *str);
 char	**ft_split_ver(const char *s, char c);
+t_dict	*dict_create_ver(unsigned int len);
+void	dict_insert_ver(t_dict *dict, const char *key, void *value);
 
 #endif
