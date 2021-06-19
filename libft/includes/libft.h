@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 16:29:28 by apuchill          #+#    #+#             */
-/*   Updated: 2021/05/23 16:20:42 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 14:31:27 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ char			*ft_strdup(const char *s1);
 char			*ft_strndup(const char *s1, size_t n);
 void			*ft_calloc(size_t count, size_t size);
 
+void			ft_free_null(void **ptr);
+void			ft_split_free(char **s);
+
 size_t			ft_strlen(const char *s);
 size_t			ft_strlen_2(char **s);
 char			*ft_strchr(const char *s, int c);
@@ -105,8 +108,6 @@ double			ft_atof(const char *str);
 char			*ft_itoa(int n);
 double			ft_sqrt(double x);
 long double		ft_pow(long double n, unsigned int pow);
-
-void			ft_split_free(char **s);
 
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
