@@ -17,7 +17,7 @@ static void	print_stack(t_lst2 *stack, char name)
 		stack = stack->next;
 	}
 	ft_printf("%01i ", stack->nbr);
-	ft_printf("(%01i)\n", stack->nbr);
+	ft_printf("(%01i)\n", stack->next->nbr);
 }
 
 static void	testing_p(t_stacks *stack)
@@ -89,20 +89,23 @@ static void	reset(t_stacks *stack)
 
 void	testing(t_stacks *stack)
 {
-	testing_p(stack);
+	// testing_p(stack);
 
-	testing_s(stack);
-	testing_s(stack);
-	testing_s(stack);
-	reset(stack);
+	// testing_s(stack);
+	// testing_s(stack);
+	// testing_s(stack);
+	// reset(stack);
 
-	testing_r(stack);
-	testing_r(stack);
-	testing_r(stack);
-	reset(stack);
+	// testing_r(stack);
+	// testing_r(stack);
+	// testing_r(stack);
+	// reset(stack);
 
-	testing_rr(stack);
-	testing_rr(stack);
-	testing_rr(stack);
-	reset(stack);
+	// testing_rr(stack);
+	// testing_rr(stack);
+	// testing_rr(stack);
+	// reset(stack);
+
+	print_stack(stack->a, 'a');
+	print_stack(stack->order, 'o');
 }

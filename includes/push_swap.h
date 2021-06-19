@@ -56,16 +56,15 @@ typedef struct s_stacks
 {
 	t_lst2	*a;
 	t_lst2	*b;
+	t_lst2	*order;
 }	t_stacks;
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              FUNCTION PROTOTYPES
 */
+t_dict	*get_input(char *argv[], t_stacks *stack);
 bool	is_lst_ordered(t_lst2 *stack);
-/*
-** FILE: actions.c
-*/
 void	run_action(t_type action, t_stacks *stack);
 /*
 ** FILE: lstc2_oper.c
