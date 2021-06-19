@@ -62,7 +62,7 @@ typedef struct s_stacks
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              FUNCTION PROTOTYPES
 */
-t_dict	*get_input(char *argv[], t_stacks *stack);
+void	get_input(char *argv[], t_stacks *stack, t_dict **dict_nbrs);
 bool	is_lst_ordered(t_lst2 *stack);
 void	run_action(t_type action, t_stacks *stack);
 /*

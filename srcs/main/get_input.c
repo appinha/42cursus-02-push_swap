@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:59:40 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/19 18:22:20 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:35:54 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,28 @@ static bool	is_input_splitted(char **argv[])
 
 // TODO: trim '+' for key used in dict_insert()
 // TODO: get 'pos' for each number after ordered
-t_dict	*get_input(char *argv[], t_stacks *stack)
+void	get_input(char *argv[], t_stacks *stack, t_dict **dict_nbrs)
 {
 	bool	needs_free;
 	int		i;
-	t_dict	*dict_nbrs;
 	t_lst2	*new;
 
 	needs_free = is_input_splitted(&argv);
 	i = 0;
 	if (needs_free == false)
 		i++;
-	dict_nbrs = dict_create_ver(ft_strlen_2(argv));
+	*dict_nbrs = dict_create_ver(ft_strlen_2(argv));
 	while (argv[i])
 	{
-		if (ft_str_isint(argv[i]) == false || dict_get(dict_nbrs, argv[i]))
+		if (ft_str_isint(argv[i]) == false || dict_get(*dict_nbrs, argv[i]))
 			error_msg_and_exit(0, INPUTERR);
 		new = lst2c_new((void *)nbr_into_data(ft_atoi(argv[i])));
 		insert_in_order(&stack->order, new);
-		dict_insert_ver(dict_nbrs, argv[i], new);
+		dict_insert_ver(*dict_nbrs, argv[i], new);
 		lst2c_add_back(&stack->a,
 			lst2c_new((void *)nbr_into_data(ft_atoi(argv[i]))));
 		i++;
 	}
 	if (needs_free == true)
 		ft_split_free(argv);
-	return (dict_nbrs);
 }

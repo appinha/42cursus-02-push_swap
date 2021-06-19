@@ -42,7 +42,7 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		exit(EXIT_SUCCESS);
 	ft_bzero(&stack, sizeof(t_stacks));
-	dict_nbrs = get_input(argv, &stack);
+	get_input(argv, &stack, &dict_nbrs);
 	if (is_lst_ordered(stack.a) == true)
 		exit(EXIT_SUCCESS);
 	testing(&stack);
