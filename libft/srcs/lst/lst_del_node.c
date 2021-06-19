@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   lst_del_one.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 17:31:06 by apuchill          #+#    #+#             */
-/*   Updated: 2020/02/19 14:04:11 by apuchill         ###   ########.fr       */
+/*   Created: 2020/02/07 17:06:49 by apuchill          #+#    #+#             */
+/*   Updated: 2021/06/19 17:24:16 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** LIBRARY: N/A
-** SYNOPSIS: apply function to content of all list's elements
+** LIBRARY: Singly Linked List
+** SYNOPSIS: delete element from list
 **
 ** DESCRIPTION:
-** 		Iterates the list ’lst’ and applies the function ’f’ to the content of
-**	each element.
+** 		Takes as a parameter an element and frees the memory of the element's
+**	data using the function 'del' given as a parameter and free the element.
+**	The memory of 'next' must not be freed.
 */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	lst_del_node(t_list *lst, void (*del)(void *))
 {
-	if (!lst || !f)
+	if (!lst)
 		return ;
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	del(lst->data);
+	free(lst);
 }

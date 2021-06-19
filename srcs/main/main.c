@@ -15,6 +15,8 @@
 bool	is_lst_ordered(t_lst2 *stack)
 {
 	t_lst2	*last;
+	t_data	*data;
+	t_data	*data_next;
 
 	if (!stack)
 		return (false);
@@ -23,7 +25,9 @@ bool	is_lst_ordered(t_lst2 *stack)
 		return (true);
 	while (stack != last)
 	{
-		if (stack->nbr > stack->next->nbr)
+		data = stack->data;
+		data_next = stack->next->data;
+		if (data->nbr > data_next->nbr)
 			return (false);
 		stack = stack->next;
 	}

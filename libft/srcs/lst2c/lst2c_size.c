@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   lst2c_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 15:54:09 by apuchill          #+#    #+#             */
-/*   Updated: 2021/03/28 13:13:12 by apuchill         ###   ########.fr       */
+/*   Created: 2021/06/19 16:28:27 by apuchill          #+#    #+#             */
+/*   Updated: 2021/06/19 18:19:10 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** LIBRARY: N/A
-** SYNOPSIS: add new element at end of list
+** LIBRARY: Circular Doubly Linked List
+** SYNOPSIS: get size (length) of a list
 **
 ** DESCRIPTION:
-** 		Adds the element ’new’ at the end of the list.
+** 		Counts the number of elements in a list.
 */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	lst2c_size(t_lst2 *first)
 {
-	t_list	*aux;
+	int	count;
 
-	if (!new)
-		return ;
-	if (!*lst)
+	first->prev->next = NULL;
+	count = 0;
+	while (first)
 	{
-		*lst = new;
-		return ;
+		first = first->next;
+		count++;
 	}
-	aux = ft_lstlast(*lst);
-	aux->next = new;
+	return (count);
 }

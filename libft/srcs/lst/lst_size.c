@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   lst_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 17:10:27 by apuchill          #+#    #+#             */
-/*   Updated: 2021/03/28 13:12:56 by apuchill         ###   ########.fr       */
+/*   Created: 2020/02/07 16:55:41 by apuchill          #+#    #+#             */
+/*   Updated: 2021/06/19 16:29:25 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** LIBRARY: N/A
-** SYNOPSIS: delete sequence of elements of list from a starting point
+** LIBRARY: Singly Linked List
+** SYNOPSIS: get size (length) of a list
 **
 ** DESCRIPTION:
-** 		Deletes and frees the given element and every successor of that element,
-**	using the function ’del’ and free(3). Finally, the pointer to the list must
-**	be set to NULL.
+** 		Counts the number of elements in a list.
 */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+int	lst_size(t_list *lst)
 {
-	t_list	*aux;
+	int	count;
 
-	if (!*lst)
-		return ;
-	while (*lst)
+	count = 0;
+	while (lst)
 	{
-		aux = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = aux;
+		lst = lst->next;
+		count++;
 	}
-	*lst = 0;
+	return (count);
 }

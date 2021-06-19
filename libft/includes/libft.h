@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 16:29:28 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/19 14:31:27 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 17:24:07 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,16 @@
 */
 typedef struct s_list
 {
-	void			*content;
+	void			*data;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct s_lst2
+{
+	void			*data;
+	struct s_lst2	*prev;
+	struct s_lst2	*next;
+}	t_lst2;
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -109,15 +116,23 @@ char			*ft_itoa(int n);
 double			ft_sqrt(double x);
 long double		ft_pow(long double n, unsigned int pow);
 
-t_list			*ft_lstnew(void *content);
-t_list			*ft_lstlast(t_list *lst);
-int				ft_lstsize(t_list *lst);
-void			ft_lstadd_front(t_list **lst, t_list *new);
-void			ft_lstadd_back(t_list **lst, t_list *new);
-void			ft_lstdelone(t_list *lst, void (*del)(void *));
-void			ft_lstclear(t_list **lst, void (*del)(void*));
-void			ft_lstiter(t_list *lst, void (*f)(void *));
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
-					void (*del)(void *));
+t_list			*lst_new(void *data);
+t_list			*lst_last(t_list *lst);
+int				lst_size(t_list *lst);
+void			lst_add_front(t_list **lst, t_list *new);
+void			lst_add_back(t_list **lst, t_list *new);
+void			lst_del_node(t_list *lst, void (*del)(void *));
+void			lst_clear(t_list **lst, void (*del)(void*));
+void			lst_iter(t_list *lst, void (*f)(void *));
+t_list			*lst_map(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+t_lst2			*lst2c_new(void *data);
+t_lst2			*lst2c_last(t_lst2 *first);
+int				lst2c_size(t_lst2 *first);
+void			lst2c_add_front(t_lst2 **first, t_lst2 *new);
+void			lst2c_add_back(t_lst2 **first, t_lst2 *new);
+t_lst2			*lst2c_pop_node(t_lst2 **first, t_lst2 *node);
+void			lst2c_del_node(t_lst2 *node, void (*del)(void *));
+void			lst2c_clear(t_lst2 **first, void (*del)(void*));
 
 #endif

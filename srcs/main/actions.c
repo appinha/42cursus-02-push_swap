@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 12:49:57 by apuchill          #+#    #+#             */
-/*   Updated: 2021/05/30 13:31:08 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 16:50:56 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	push(t_lst2 **src, t_lst2 **dst)
 {
 	if (!(*src))
 		return ;
-	lst2c_addfront(dst, lst2c_delnode(src, *src));
+	lst2c_add_front(dst, lst2c_pop_node(src, *src));
 }
 
 /*
@@ -46,8 +46,8 @@ static void	swap(t_lst2 **first)
 
 	if (!(*first) || (*first) == (*first)->next)
 		return ;
-	second = lst2c_delnode(first, (*first)->next);
-	lst2c_addfront(first, second);
+	second = lst2c_pop_node(first, (*first)->next);
+	lst2c_add_front(first, second);
 }
 
 /*

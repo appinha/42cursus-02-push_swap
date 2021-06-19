@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   lst2c_add_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 17:06:49 by apuchill          #+#    #+#             */
-/*   Updated: 2020/02/19 14:04:07 by apuchill         ###   ########.fr       */
+/*   Created: 2021/06/19 15:59:16 by apuchill          #+#    #+#             */
+/*   Updated: 2021/06/19 16:00:03 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** LIBRARY: N/A
-** SYNOPSIS: delete element from list
+** LIBRARY: Circular Doubly Linked List
+** SYNOPSIS: add new element at beginning of list
 **
 ** DESCRIPTION:
-** 		Takes as a parameter an element and frees the memory of the element’s
-**	content using the function ’del’ given as a parameter and free the element.
-**	The memory of ’next’ must not be freed.
+** 		Adds the element 'new' at the beginning of the list.
 */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	lst2c_add_front(t_lst2 **first, t_lst2 *new)
 {
-	if (!lst)
-		return ;
-	del(lst->content);
-	free(lst);
+	lst2c_add_back(first, new);
+	*first = new;
 }

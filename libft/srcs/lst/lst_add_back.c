@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   lst_add_back.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 16:44:34 by apuchill          #+#    #+#             */
-/*   Updated: 2020/02/19 14:04:15 by apuchill         ###   ########.fr       */
+/*   Created: 2020/02/07 15:54:09 by apuchill          #+#    #+#             */
+/*   Updated: 2021/06/19 15:58:43 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** LIBRARY: N/A
-** SYNOPSIS: find last element of list
+** LIBRARY: Singly Linked List
+** SYNOPSIS: add new element at end of list
 **
 ** DESCRIPTION:
-** 		Returns the last element of the list.
+** 		Adds the element 'new' at the end of the list.
 */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	lst_add_back(t_list **lst, t_list *new)
 {
-	if (!lst)
-		return (0);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	t_list	*last;
+
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = lst_last(*lst);
+	last->next = new;
 }
