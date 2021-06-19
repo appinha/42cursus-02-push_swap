@@ -33,3 +33,25 @@ bool	ft_str_isint(char *str)
 		return (false);
 	return (true);
 }
+
+t_data	*new_data(int nbr)
+{
+	t_data	*data;
+
+	data = calloc_ver(1, sizeof(t_data));
+	data->nbr = nbr;
+	return (data);
+}
+
+int	get_pos_of_nbr(t_dict *dict_nbrs, int nbr)
+{
+	char	*key;
+	t_lst2	*node;
+	t_data	*data;
+
+	key = ft_itoa(nbr);
+	node = (t_lst2 *)dict_get(dict_nbrs, key);
+	free(key);
+	data = node->data;
+	return (data->pos);
+}

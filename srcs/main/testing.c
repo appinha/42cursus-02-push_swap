@@ -15,13 +15,13 @@ static void	print_stack(t_lst2 *stack, char name)
 	while (stack->next != first)
 	{
 		data = stack->data;
-		ft_printf("%01i ", data->nbr);
+		ft_printf("%01i (%01i), ", data->nbr, data->pos);
 		stack = stack->next;
 	}
 	data = stack->data;
-	ft_printf("%01i ", data->nbr);
+	ft_printf("%01i (%01i), ", data->nbr, data->pos);
 	data = stack->next->data;
-	ft_printf("(%01i)\n", data->nbr);
+	ft_printf("[%01i]\n", data->nbr);
 }
 
 static void	testing_p(t_stacks *stack)

@@ -69,6 +69,8 @@ void	run_action(t_type action, t_stacks *stack);
 ** FILE: utils.c
 */
 bool	ft_str_isint(char *str);
+t_data	*new_data(int nbr);
+int		get_pos_of_nbr(t_dict *dict_nbrs, int nbr);
 
 // APAGAR
 void	testing(t_stacks *stack);
