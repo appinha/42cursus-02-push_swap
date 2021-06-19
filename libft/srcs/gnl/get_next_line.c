@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 20:01:42 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/19 14:30:02 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 18:18:48 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void	ft_cpy_exc_buff(char **buff, long long j)
 
 	i = 0;
 	if (buff[0][j] == '\0')
-		ft_free_null((void**)&*buff);
+		ft_free_null((void **)&*buff);
 	else
 	{
 		while (buff[0][j] != '\0')
 			tmp[i++] = buff[0][j++];
 		tmp[i] = '\0';
-		ft_free_null((void**)&*buff);
+		ft_free_null((void **)&*buff);
 		*buff = ft_strdup(tmp);
 	}
 }
@@ -43,7 +43,7 @@ static int	ft_buff2line(char **line, char **buff)
 		tmp[i] = line[0][i];
 		i++;
 	}
-	ft_free_null((void**)&*line);
+	ft_free_null((void **)&*line);
 	while (buff[0][j] != '\0' && buff[0][j] != '\n')
 		tmp[i++] = buff[0][j++];
 	tmp[i] = '\0';
@@ -53,7 +53,7 @@ static int	ft_buff2line(char **line, char **buff)
 		ft_cpy_exc_buff(&*buff, j + 1);
 		return (FOUND_ENDLINE);
 	}
-	ft_free_null((void**)&*buff);
+	ft_free_null((void **)&*buff);
 	return (NO_ENDLINE);
 }
 
@@ -95,6 +95,6 @@ int	get_next_line(int fd, char **line)
 		if (endline == FOUND_ENDLINE)
 			return (READL_OK);
 	}
-	ft_free_null((void**)&*line);
+	ft_free_null((void **)&*line);
 	return (ERR_HPND);
 }
