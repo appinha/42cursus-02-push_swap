@@ -37,12 +37,11 @@ bool	is_lst_ordered(t_lst2 *stack)
 int	main(int argc, char *argv[])
 {
 	t_stacks	stack;
-	t_dict		*dict_nbrs;
 
 	if (argc == 1)
 		exit(EXIT_SUCCESS);
 	ft_bzero(&stack, sizeof(t_stacks));
-	get_input(argv, &stack, &dict_nbrs);
+	get_input(argv, &stack);
 	if (is_lst_ordered(stack.a) == true)
 		exit(EXIT_SUCCESS);
 	testing(&stack);

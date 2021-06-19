@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:56:35 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/19 14:49:37 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 19:39:56 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,5 @@ void	error_msg_and_exit(char *function, char *msg);
 */
 void	*calloc_ver(size_t count, size_t size);
 char	**ft_split_ver(const char *s, char c);
-t_dict	*dict_create_ver(unsigned int len);
-void	dict_insert_ver(t_dict *dict, const char *key, void *value);
 
 #endif

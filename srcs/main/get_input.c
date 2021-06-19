@@ -6,13 +6,13 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:59:40 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/19 19:36:52 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 19:43:59 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	get_nbrs_position(t_lst2 *order, t_lst2 *stack_a)
+static void	get_nbrs_position(t_lst2 *order)
 {
 	t_lst2	*last;
 	t_data	*data;
@@ -43,6 +43,8 @@ static void	insert_in_order_aux(t_lst2 **first, t_lst2 *new)
 	{
 		*first = (*first)->next;
 		data_first = (*first)->data;
+		if (data_new->nbr == data_first->nbr)
+			error_msg_and_exit(0, INPUTERR);
 	}
 	lst2c_add_front(first, new);
 	*first = aux;
@@ -62,6 +64,8 @@ static void	insert_in_order(t_lst2 **first, t_lst2 *new)
 	data_new = new->data;
 	data_first = (*first)->data;
 	data_last = (*first)->prev->data;
+	if (data_new->nbr == data_first->nbr || data_new->nbr == data_last->nbr)
+		error_msg_and_exit(0, INPUTERR);
 	if (data_new->nbr > data_last->nbr)
 		lst2c_add_back(first, new);
 	else if (data_new->nbr < data_first->nbr)
@@ -83,30 +87,26 @@ static bool	is_input_splitted(char **argv[])
 	return (false);
 }
 
-void	get_input(char *argv[], t_stacks *stack, t_dict **dict_nbrs)
+void	get_input(char *argv[], t_stacks *stack)
 {
 	bool	needs_free;
 	int		i;
-	t_lst2	*new;
 	t_data	*data;
 
 	needs_free = is_input_splitted(&argv);
 	i = 0;
 	if (needs_free == false)
 		i++;
-	*dict_nbrs = dict_create_ver(ft_strlen_2(argv));
 	while (argv[i])
 	{
-		if (ft_str_isint(argv[i]) == false || dict_get(*dict_nbrs, argv[i]))
+		if (ft_str_isint(argv[i]) == false)
 			error_msg_and_exit(0, INPUTERR);
 		data = new_data(ft_atoi(argv[i]));
-		new = lst2c_new((void *)data);
-		insert_in_order(&stack->order, new);
-		dict_insert_ver(*dict_nbrs, argv[i], new);
+		insert_in_order(&stack->order, lst2c_new((void *)data));
 		lst2c_add_back(&stack->a, lst2c_new((void *)data));
 		i++;
 	}
 	if (needs_free == true)
 		ft_split_free(argv);
-	get_nbrs_position(stack->order, stack->a);
+	get_nbrs_position(stack->order);
 }

@@ -6,7 +6,7 @@
 /*   By: apuchill <apuchill@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 22:58:06 by apuchill          #+#    #+#             */
-/*   Updated: 2021/06/19 18:47:55 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/06/19 19:39:44 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,4 @@ char	**ft_split_ver(const char *s, char c)
 	if (ptr == NULL)
 		error_msg_and_exit("ft_split", SYSERR);
 	return (ptr);
-}
-
-t_dict	*dict_create_ver(unsigned int len)
-{
-	t_dict	*ptr;
-
-	ptr = dict_create(len);
-	if (ptr == NULL)
-		error_msg_and_exit("dict_create", SYSERR);
-	return (ptr);
-}
-
-void	dict_insert_ver(t_dict *dict, const char *key, void *value)
-{
-	char	*str;
-
-	str = ft_strtrim(key, "+");
-	if (dict_insert(dict, str, value) < 0)
-		error_msg_and_exit("dict_insert", SYSERR);
-	free(str);
 }
